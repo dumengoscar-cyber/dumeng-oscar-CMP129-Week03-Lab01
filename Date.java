@@ -8,22 +8,41 @@ public class Date {
     private int month;
     private int day;
     private int year;
+    private String[] months = {
+        "january", "february", "march", "april", "may", "june", "july", "augest", "september", "october", "november", "december" 
+    };
 
     public Date(int month, int day, int year)
     {
-        this.month = month;
-        this.day = day;
-        this.year = year;
+        setMonth(month);
+        setDay(day);
+       this.year = year;
     }
 
-    public void setMonth(int m)
-    { month = m;
+   public void setMonth(int m)
+{
+    if (m >= 1 && m <= 12)
+    {
+        this.month = m;
     }
-    public void setDay(int d)
-    {day = d;
+    else
+    {
+        System.out.println("Invalid month.");
     }
+}
+ public void setDay(int d)
+{
+    if (d >= 1 && d <= 31)
+    {
+        this.day = d;
+    }
+    else
+    {
+        System.out.println("Invalid day.");
+    }
+}
     public void setYear(int y)
-    {year = y;
+    {this.year = y;
     }
     public int getMonth()
     {return month;
@@ -34,10 +53,17 @@ public class Date {
     public int getYear()
     {return year;
     }
-    public void displayInfo()
+    public void displayNumeric()
     {
-        System.out.println("month: " + month);
-        System.out.println("day: " + day);
-        System.out.println("year: " + year);
+System.out.println(month + "/" + day + "/" + year);
     }
+    
+        public void displayMonthFirst()
+        { 
+            System.out.println(months[month - 1] + " " + day + ", " + year);
+         }
+         public void displayDayFirst()
+         {
+            System.out.println(day + " " + months[month - 1] + " " + year);
+         }
 }
